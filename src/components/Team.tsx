@@ -1,15 +1,26 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const team = [
-  { name: "Alex", trait: "likes building things", initials: "A" },
-  { name: "Jordan", trait: "obsessed with pixels", initials: "J" },
-  { name: "Sam", trait: "tells good stories", initials: "S" },
-  { name: "Riley", trait: "makes numbers fun", initials: "R" },
-  { name: "Taylor", trait: "sees the big picture", initials: "T" },
-  { name: "Morgan", trait: "connects the dots", initials: "M" },
+  { name: "Alex", trait: "likes building things", initials: "A", secretTrait: "also loves coffee ☕" },
+  { name: "Jordan", trait: "obsessed with pixels", initials: "J", secretTrait: "secretly a gamer 🎮" },
+  { name: "Sam", trait: "tells good stories", initials: "S", secretTrait: "has too many plants 🌱" },
+  { name: "Riley", trait: "makes numbers fun", initials: "R", secretTrait: "terrible at cooking 🍳" },
+  { name: "Taylor", trait: "sees the big picture", initials: "T", secretTrait: "midnight snacker 🌙" },
+  { name: "Morgan", trait: "connects the dots", initials: "M", secretTrait: "cat person 🐱" },
 ];
 
 const Team = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [clickCounts, setClickCounts] = useState<Record<number, number>>({});
+
+  const handleAvatarClick = (index: number) => {
+    setClickCounts((prev) => ({
+      ...prev,
+      [index]: (prev[index] || 0) + 1,
+    }));
+  };
+
   return (
     <section 
       id="team" 
@@ -40,19 +51,31 @@ const Team = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group text-center"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Avatar placeholder */}
+              {/* Avatar placeholder with click easter egg */}
               <div className="relative mx-auto w-24 h-24 md:w-32 md:h-32 mb-4">
-                <div className="w-full h-full rounded-full bg-incial-blue/20 flex items-center justify-center text-3xl md:text-4xl font-bold text-incial-blue transition-all duration-300 group-hover:bg-incial-blue group-hover:text-background group-hover:scale-105">
-                  {member.initials}
-                </div>
+                <motion.button
+                  onClick={() => handleAvatarClick(index)}
+                  animate={{ 
+                    rotate: (clickCounts[index] || 0) >= 3 ? [0, 10, -10, 0] : 0,
+                    scale: hoveredIndex === index ? 1.05 : 1
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full h-full rounded-full bg-incial-blue/20 flex items-center justify-center text-3xl md:text-4xl font-bold text-incial-blue transition-all duration-300 group-hover:bg-incial-blue group-hover:text-background cursor-pointer"
+                >
+                  {(clickCounts[index] || 0) >= 5 ? "😄" : member.initials}
+                </motion.button>
                 {/* Hover glow */}
-                <div className="absolute inset-0 rounded-full bg-incial-blue/0 group-hover:bg-incial-blue/20 blur-xl transition-all duration-300" />
+                <div className="absolute inset-0 rounded-full bg-incial-blue/0 group-hover:bg-incial-blue/20 blur-xl transition-all duration-300 pointer-events-none" />
               </div>
               
               <h3 className="text-xl md:text-2xl font-bold mb-1">{member.name}</h3>
-              <p className="font-handwriting text-lg md:text-xl text-muted opacity-70">
-                {member.trait}
+              <p className="font-handwriting text-lg md:text-xl text-muted opacity-70 transition-all duration-300">
+                {hoveredIndex === index && (clickCounts[index] || 0) >= 3 
+                  ? member.secretTrait 
+                  : member.trait}
               </p>
             </motion.div>
           ))}

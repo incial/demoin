@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import HoverSurprise from "./HoverSurprise";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -11,6 +12,7 @@ const navLinks = [
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,18 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogoClick = () => {
+    setLogoClicks((prev) => prev + 1);
+  };
+
+  const getLogoEmoji = () => {
+    if (logoClicks >= 10) return " 🚀";
+    if (logoClicks >= 7) return " 🎉";
+    if (logoClicks >= 5) return " ✨";
+    if (logoClicks >= 3) return " 👀";
+    return "";
+  };
 
   return (
     <>
@@ -32,10 +46,16 @@ const Navigation = () => {
         }`}
       >
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="text-2xl font-bold">
-            incial<span className="text-primary">.</span>
-          </a>
+          {/* Logo with easter egg */}
+          <HoverSurprise message="click me more...">
+            <button 
+              onClick={handleLogoClick}
+              className="text-2xl font-bold transition-transform duration-200 hover:scale-105"
+            >
+              incial<span className="text-primary">.</span>
+              <span className="text-sm">{getLogoEmoji()}</span>
+            </button>
+          </HoverSurprise>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

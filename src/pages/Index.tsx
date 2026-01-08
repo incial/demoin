@@ -9,10 +9,14 @@ import Testimonials from "@/components/Testimonials";
 import Works from "@/components/Works";
 import BookConversation from "@/components/BookConversation";
 import Footer from "@/components/Footer";
+import PlayfulCursor from "@/components/PlayfulCursor";
+import EasterEggs from "@/components/EasterEggs";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <PlayfulCursor />
+      <EasterEggs />
       <Navigation />
       <Hero />
       <About />
