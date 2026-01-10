@@ -68,7 +68,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
+        heading: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
         handwriting: ["Caveat", "cursive"],
       },
       borderRadius: {

@@ -53,7 +53,7 @@ const BookConversation = () => {
 
         <motion.p 
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.4 }}
+          whileInView={{ opacity: 0.6 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="font-handwriting text-xl text-muted mt-12"

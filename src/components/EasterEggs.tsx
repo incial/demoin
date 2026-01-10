@@ -7,10 +7,8 @@ const hiddenMessages = [
   "slow down, enjoy the view",
   "still here? we like you",
   "hidden things are the best",
-  "you found a secret ✨",
   "patience is a virtue",
   "explorer vibes 🌟",
-  "keep looking...",
 ];
 
 const EasterEggs = () => {

@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "TechFlow", "StartupHub", "GreenLeaf", "PixelPerfect", 
-  "CloudNine", "BrightIdea", "FutureScale", "DataDriven"
+  { name: "TechFlow", logo: "/clients/TechFlow.svg" },
+  { name: "StartupHub", logo: "/clients/StartupHub.svg" },
+  { name: "GreenLeaf", logo: "/clients/GreenLeaf.svg" },
+  { name: "PixelPerfect", logo: "/clients/PixelPerfect.svg" },
+  { name: "CloudNine", logo: "/clients/CloudNine.svg" },
+  { name: "BrightIdea", logo: "/clients/BrightIdea.svg" },
+  { name: "FutureScale", logo: "/clients/FutureScale.svg" },
+  { name: "DataDriven", logo: "/clients/DataDriven.svg" },
+  { name: "APJ Abdul Kalam College", logo: "/clients/APJ.png" }
 ];
 
 const Clients = () => {
@@ -30,16 +37,14 @@ const Clients = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {clients.map((client, index) => (
             <motion.div 
-              key={client}
+              key={client.name}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               className="group flex items-center justify-center p-6 md:p-8 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:bg-secondary/50"
             >
-              <span className="text-lg md:text-xl font-bold text-muted-foreground group-hover:text-primary transition-colors duration-300">
-                {client}
-              </span>
+              <img src={client.logo} alt={client.name} className="h-8 md:h-10" />
             </motion.div>
           ))}
         </div>

@@ -135,16 +135,6 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Handwritten note */}
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 0.5 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="font-handwriting text-xl text-muted-foreground mt-8 rotate-[-1deg]"
-        >
-          this is where growth happens
-        </motion.p>
-
         {/* Navigation hint */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-muted-foreground/50">
           scroll to explore • {activeIndex + 1} / {services.length}
