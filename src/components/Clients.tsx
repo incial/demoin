@@ -1,15 +1,52 @@
 import { motion } from "framer-motion";
+import AdidasLogo from "./logosclients/Adidas.svg";
+import AJCELogo from "./logosclients/AJCE.png";
+import APJParamedicalsLogo from "./logosclients/APJ Paramedicals.jpg";
+import BlaupunktLogo from "./logosclients/Blaupunkt.png";
+import CognilearnLogo from "./logosclients/Cognilearn.jpg";
+import CoincoLogo from "./logosclients/Coinco.png";
+import DatalabsLogo from "./logosclients/Datalabs.svg";
+import DCKottayamLogo from "./logosclients/DC Kottayam.png";
+import EdenPublicSchoolLogo from "./logosclients/Eden Public School.png";
+import EslaSpicesLogo from "./logosclients/Esla Spices.jpg";
+import EutropicsMainLogo from "./logosclients/eutropics-mainlogo.png";
+import FotoloomLogo from "./logosclients/Fotoloom.jpg";
+import FunfeeLogo from "./logosclients/Funfee.png";
+import HomescapesLogo from "./logosclients/Homescapes.png";
+import JaybeesCaterersLogo from "./logosclients/Jaybees Caterers.jpg";
+import MannaLogo from "./logosclients/Manna.png";
+import MeowendiLogo from "./logosclients/Meowendi.png";
+import MIRACOLogo from "./logosclients/MIRACO.jpg";
+import PreconLogo from "./logosclients/Precon.jpg";
+import SkinzoneLogo from "./logosclients/Skinzone.jpg";
+import USI3DTLogo from "./logosclients/USI3DT.png";
+import VarkitchenLogo from "./logosclients/Varkitchen Logo.png";
+import VoltantLogo from "./logosclients/Voltant.png";
 
 const clients = [
-  { name: "TechFlow", logo: "/clients/TechFlow.svg" },
-  { name: "StartupHub", logo: "/clients/StartupHub.svg" },
-  { name: "GreenLeaf", logo: "/clients/GreenLeaf.svg" },
-  { name: "PixelPerfect", logo: "/clients/PixelPerfect.svg" },
-  { name: "CloudNine", logo: "/clients/CloudNine.svg" },
-  { name: "BrightIdea", logo: "/clients/BrightIdea.svg" },
-  { name: "FutureScale", logo: "/clients/FutureScale.svg" },
-  { name: "DataDriven", logo: "/clients/DataDriven.svg" },
-  { name: "APJ Abdul Kalam College", logo: "/clients/APJ.png" }
+  { logo: AdidasLogo },
+  { logo: AJCELogo },
+  { logo: APJParamedicalsLogo },
+  { logo: BlaupunktLogo },
+  { logo: CognilearnLogo },
+  { logo: CoincoLogo },
+  { logo: DatalabsLogo },
+  { logo: DCKottayamLogo },
+  { logo: EdenPublicSchoolLogo },
+  { logo: EslaSpicesLogo },
+  { logo: EutropicsMainLogo },
+  { logo: FotoloomLogo },
+  { logo: FunfeeLogo },
+  { logo: HomescapesLogo },
+  { logo: JaybeesCaterersLogo },
+  { logo: MannaLogo },
+  { logo: MeowendiLogo },
+  { logo: MIRACOLogo },
+  { logo: PreconLogo },
+  { logo: SkinzoneLogo },
+  { logo: USI3DTLogo },
+  { logo: VarkitchenLogo },
+  { logo: VoltantLogo },
 ];
 
 const Clients = () => {
@@ -37,14 +74,14 @@ const Clients = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {clients.map((client, index) => (
             <motion.div 
-              key={client.name}
+              key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               className="group flex items-center justify-center p-6 md:p-8 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:bg-secondary/50"
             >
-              <img src={client.logo} alt={client.name} className="h-8 md:h-10" />
+              <img src={client.logo} alt="" className="h-8 md:h-10 object-contain w-full" />
             </motion.div>
           ))}
         </div>

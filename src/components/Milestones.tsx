@@ -7,7 +7,7 @@ const milestones = [
   { year: "2021", text: "team grew to 5", note: "more builders joined" },
   { year: "2022", text: "50+ brands transformed", note: "momentum building" },
   { year: "2023", text: "crossed borders", note: "global connections" },
-  { year: "2024", text: "community of 20+", note: "still growing" },
+  { year: "2024", text: "community of 20+", note: <span className="text-gray-500">still growing</span> },
   { year: "now", text: "still building", note: "keep scrolling" },
 ];
 
